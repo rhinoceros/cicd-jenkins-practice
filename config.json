@@ -1,0 +1,211 @@
+[
+    {
+        "name": "JAM",
+        "stages": [
+            "CI",
+            "NEXUS",
+            "DEV",
+            "TEST",
+            "INTE",
+            "PROD"
+        ],
+        "projects": [
+            {
+                "name": "cd-demo",
+                "label": "jam_jdk8",
+                "pipelines": [
+                    {
+                        "to": "CI",
+                        "from": "BUILD"
+                    },
+                    {
+                        "to": "DEV",
+                        "from": "BUILD"
+                    },
+                    {
+                        "to": "TEST",
+                        "from": "DEV"
+                    },
+                    {
+                        "to": "INTE",
+                        "from": "TEST"
+                    },
+                    {
+                        "to": "PROD",
+                        "from": "INTE"
+                    }
+                ]
+            },
+            {
+                "name": "ci-demo",
+                "label": "jam_jdk8",
+                "pipelines": [
+                    {
+                        "to": "CI",
+                        "from": "BUILD"
+                    },
+                    {
+                        "to": "TEST",
+                        "from": "BUILD"
+                    },
+                    {
+                        "to": "INTE",
+                        "from": "TEST"
+                    },
+                    {
+                        "to": "PROD",
+                        "from": "INTE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "productAA", 
+        "stages": [
+            "CI", 
+            "NEXUS", 
+            "DEV", 
+            "TEST", 
+            "INTE", 
+            "PROD"
+        ], 
+        "projects": [
+            {
+                "name": "a_x_dto", 
+                "pipelines": [
+                    {
+                        "to": "CI",
+                        "from": "BUILD"
+                    },
+                    {
+                        "to": "NEXUS", 
+                        "from": "BUILD"
+                    }
+                ]
+            }, 
+            {
+                "name": "a_x_api", 
+                "pipelines": [
+                    {
+                        "to": "CI",
+                        "from": "BUILD"
+                    },
+                    {
+                        "to": "NEXUS", 
+                        "from": "BUILD"
+                    }
+                ]
+            }, 
+            {
+                "name": "a_x_server", 
+                "pipelines": [
+                    {
+                        "to": "CI",
+                        "from": "BUILD"
+                    },
+                    {
+                        "to": "DEV", 
+                        "from": "BUILD"
+                    }, 
+                    {
+                        "to": "TEST", 
+                        "from": "DEV"
+                    }, 
+                    {
+                        "to": "INTE", 
+                        "from": "TEST"
+                    }, 
+                    {
+                        "to": "PROD", 
+                        "from": "INTE"
+                    }
+                ]
+            }, 
+            {
+                "name": "a_x_rest", 
+                "pipelines": [
+                    {
+                        "to": "CI",
+                        "from": "BUILD"
+                    },
+                    {
+                        "to": "TEST", 
+                        "from": "BUILD"
+                    }, 
+                    {
+                        "to": "INTE", 
+                        "from": "TEST"
+                    }, 
+                    {
+                        "to": "PROD", 
+                        "from": "INTE"
+                    }
+                ]
+            }
+        ]
+    }, 
+    {
+        "name": "productBB", 
+        "stages": [
+            "CI", 
+            "NEXUS", 
+            "INTE", 
+            "PROD"
+        ], 
+        "projects": [
+            {
+                "name": "b_x_dto", 
+                "pipelines": [
+                    {
+                        "to": "CI",
+                        "from": "BUILD"
+                    },
+                    {
+                        "to": "NEXUS", 
+                        "from": "BUILD"
+                    }
+                ]
+            }, 
+            {
+                "name": "b_x_web", 
+                "pipelines": [
+                    {
+                        "to": "CI",
+                        "from": "BUILD"
+                    },
+                    {
+                        "to": "INTE", 
+                        "from": "BUILD"
+                    }, 
+                    {
+                        "to": "PROD", 
+                        "from": "INTE"
+                    }
+                ]
+            }, 
+            {
+                "name": "b_x_server", 
+                "pipelines": [
+                    {
+                        "to": "CI",
+                        "from": "BUILD"
+                    },
+                    {
+                        "to": "TEST", 
+                        "from": "BUILD"
+                    }, 
+                    {
+                        "to": "INTE", 
+                        "from": "BUILD"
+                    }, 
+                    {
+                        "to": "PROD", 
+                        "from": "INTE"
+                    }
+                ]
+            }
+        ]
+    }
+]
+
