@@ -49,11 +49,10 @@ Jenkins.instance.getViews().each{
   }
 }
 
-Jenkins.items.each{
+Jenkins.instance.items.each{
   if(it.name in in_view_jobs)  return
     in_view_jobs.add(it.name)
-  showinfo("view1","view2",it)
+  showJobInfo("view1","view2",it)
 }
 
 ""
-
